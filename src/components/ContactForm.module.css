@@ -1,0 +1,315 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.field {
+  position: relative;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  transition: background 0.2s;
+}
+
+.row .field {
+  padding: 1.5rem 1.5rem;
+  border-top: none;
+}
+
+.row .field:first-child {
+  padding-left: 0;
+}
+
+.field.focused {
+  background: color-mix(in srgb, var(--accent) 3%, var(--bg));
+}
+
+.field.fieldError .fieldLine {
+  background: var(--red) !important;
+  width: 100% !important;
+}
+
+.field.fieldError .label {
+  color: var(--red);
+}
+
+.label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+.focused .label {
+  color: var(--accent);
+}
+
+.input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.input::placeholder {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Select */
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: none;
+  padding-right: 1.5rem;
+}
+
+.select option {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 0;
+  color: var(--muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.focused .selectArrow {
+  color: var(--accent);
+}
+
+/* Textarea */
+.fieldTextarea {
+  padding-top: 1.5rem;
+}
+
+.textarea {
+  resize: none;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+/* Animated bottom line */
+.fieldLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.focused .fieldLine {
+  width: 100%;
+}
+
+/* Bottom actions */
+.formBottom {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* Submit button */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 1rem 2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.submitBtn:hover::before {
+  transform: scaleX(1);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+}
+
+.submitText {
+  position: relative;
+}
+
+.submitArrow {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error */
+.errorMsg {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  line-height: 1.8;
+}
+
+.errorLink {
+  color: var(--red);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,77,77,0.4);
+}
+
+/* Mailto fallback */
+.mailtoFallback {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  margin-left: auto;
+}
+
+.mailtoFallback:hover {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+/* ─── SUCCESS STATE ─── */
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 3rem 0;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.successIcon {
+  width: 56px;
+  height: 56px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-dim);
+}
+
+.successTitle {
+  font-size: 3.5rem;
+  line-height: 0.9;
+  color: var(--text);
+}
+
+.successMsg {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+
+.anotherBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  margin-top: 0.5rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.anotherBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: none;
+    border-top: none;
+  }
+  .row .field {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .row .field:first-child {
+    padding-left: 0;
+  }
+  .formBottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .mailtoFallback {
+    margin-left: 0;
+  }
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
