@@ -132,6 +132,23 @@ export default function ProjectModal({ project, onClose, lang }) {
               <h2 className={`${styles.title} display`}>{project.title}</h2>
             </div>
 
+            {/* ── Image Block ── */}
+            {project.image ? (
+              <div className={styles.imageContainer}>
+                <img src={project.image} alt={project.title} className={styles.image} />
+                <div className={styles.imageOverlay} style={{ background: `linear-gradient(to bottom, transparent, rgba(0,0,0,0.4))` }} />
+              </div>
+            ) : (
+              <div className={styles.imagePlaceholder} style={{ '--project-color': color }}>
+                <div className={styles.placeholderGrid} />
+                <div className={styles.placeholderGlow} style={{ background: `radial-gradient(circle at 50% 50%, ${color}33, transparent 70%)` }} />
+                <div className={styles.placeholderContent}>
+                  <span className={`${styles.placeholderTag} mono`} style={{ color: color }}>{project.category}</span>
+                  <h3 className={`${styles.placeholderTitle} display`}>{project.title}</h3>
+                </div>
+              </div>
+            )}
+
             {project.details?.overview && (
               <div className={styles.block}>
                 <h4 className={`${styles.blockLabel} mono`}>{l.overview}</h4>

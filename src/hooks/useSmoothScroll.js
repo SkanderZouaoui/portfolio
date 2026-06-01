@@ -1,43 +1,15 @@
 import { useEffect } from 'react'
-import Lenis from '@studio-freight/lenis'
 
-let lenisInstance = null
-let rafId = null
-
-function createLenis() {
-  if (lenisInstance) return
-  lenisInstance = new Lenis({
-    duration: 1.4,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    smoothWheel: true,
-  })
-  function raf(time) {
-    lenisInstance?.raf(time)
-    rafId = requestAnimationFrame(raf)
-  }
-  rafId = requestAnimationFrame(raf)
-}
-
-function destroyLenis() {
-  if (rafId) { cancelAnimationFrame(rafId); rafId = null }
-  if (lenisInstance) { lenisInstance.destroy(); lenisInstance = null }
-}
-
-// Called when modal opens — fully removes Lenis wheel listeners
+// No-op functions to fallback to standard browser scrolling without breaking imports in ProjectModal
 export function pauseSmoothScroll() {
-  destroyLenis()
+  // No-op for standard scroll
 }
 
-// Called when modal closes — recreates Lenis
 export function resumeSmoothScroll() {
-  destroyLenis() // safety cleanup
-  createLenis()
+  // No-op for standard scroll
 }
 
 export default function useSmoothScroll() {
-  useEffect(() => {
-    createLenis()
-    return () => destroyLenis()
-  }, [])
+  // No-op for standard scroll
 }
+
