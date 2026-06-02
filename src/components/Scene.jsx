@@ -3,6 +3,13 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei'
 import * as THREE from 'three'
 
+/* ─── Suppress THREE.Clock deprecation from R3F v9 internals (remove after upgrading to R3F v10) ─── */
+const _warn = console.warn
+console.warn = (...args) => {
+  if (typeof args[0] === 'string' && args[0].includes('THREE.Clock')) return
+  _warn.apply(console, args)
+}
+
 /* ─── Mouse tracker shared across meshes ─── */
 const mouse = { x: 0, y: 0, tx: 0, ty: 0 }
 if (typeof window !== 'undefined') {
@@ -26,6 +33,7 @@ if (typeof window !== 'undefined') {
 /* ─── Ribbon / DNA helix ─── */
 function Helix() {
   const groupRef = useRef()
+  const elapsed = useRef(0)
   const TURNS = 4
   const POINTS = 220
   const R = 1.1
@@ -60,11 +68,12 @@ function Helix() {
     return res
   }, [])
 
-  useFrame((state) => {
+  useFrame((_, delta) => {
     if (!groupRef.current) return
+    elapsed.current += delta
     mouse.x += (mouse.tx - mouse.x) * 0.04
     mouse.y += (mouse.ty - mouse.y) * 0.04
-    groupRef.current.rotation.y = state.clock.elapsedTime * 0.18 + mouse.x * 0.4
+    groupRef.current.rotation.y = elapsed.current * 0.18 + mouse.x * 0.4
     groupRef.current.rotation.x = mouse.y * 0.15
   })
 
@@ -227,6 +236,7 @@ function NoiseSphere() {
 /* ─── GPU particle field ─── */
 function ParticleField() {
   const meshRef = useRef()
+  const elapsed = useRef(0)
   const COUNT = 1400
 
   const { positions, colors, sizes } = useMemo(() => {
@@ -249,10 +259,11 @@ function ParticleField() {
     return { positions: pos, colors: col, sizes: sz }
   }, [])
 
-  useFrame((state) => {
+  useFrame((_, delta) => {
     if (!meshRef.current) return
-    meshRef.current.rotation.y = state.clock.elapsedTime * 0.03 + mouse.x * 0.2
-    meshRef.current.rotation.x = state.clock.elapsedTime * 0.01 + mouse.y * 0.1
+    elapsed.current += delta
+    meshRef.current.rotation.y = elapsed.current * 0.03 + mouse.x * 0.2
+    meshRef.current.rotation.x = elapsed.current * 0.01 + mouse.y * 0.1
   })
 
   return (
@@ -270,10 +281,12 @@ function ParticleField() {
 /* ─── Floating rings ─── */
 function Rings() {
   const group = useRef()
-  useFrame((state) => {
+  const elapsed = useRef(0)
+  useFrame((_, delta) => {
     if (!group.current) return
-    group.current.rotation.x = state.clock.elapsedTime * 0.07 + mouse.y * 0.2
-    group.current.rotation.z = state.clock.elapsedTime * 0.04
+    elapsed.current += delta
+    group.current.rotation.x = elapsed.current * 0.07 + mouse.y * 0.2
+    group.current.rotation.z = elapsed.current * 0.04
   })
   return (
     <group ref={group} position={[2.5, 0.5, -1]}>

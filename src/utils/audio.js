@@ -2,6 +2,8 @@
 
 let audioCtx = null
 
+// Must be called directly from a user gesture (e.g. sound toggle click).
+// Never call this proactively on hover — browsers block it until a real interaction.
 export function initAudio() {
   try {
     if (!audioCtx) {
@@ -15,8 +17,12 @@ export function initAudio() {
   }
 }
 
+// Returns the context only if it was already created and is running.
+// Does NOT create a new context — avoids triggering the autoplay policy error.
 function getAudioContext() {
-  initAudio()
+  if (!audioCtx || audioCtx.state === 'suspended' || audioCtx.state === 'closed') {
+    return null
+  }
   return audioCtx
 }
 
@@ -26,6 +32,7 @@ export function playTick() {
     if (!isSoundOn) return
 
     const ctx = getAudioContext()
+    if (!ctx) return
     const osc = ctx.createOscillator()
     const gain = ctx.createGain()
 
@@ -53,6 +60,7 @@ export function playClick() {
     if (!isSoundOn) return
 
     const ctx = getAudioContext()
+    if (!ctx) return
     const osc = ctx.createOscillator()
     const gain = ctx.createGain()
 
@@ -80,6 +88,7 @@ export function playSwell() {
     if (!isSoundOn) return
 
     const ctx = getAudioContext()
+    if (!ctx) return
     const osc = ctx.createOscillator()
     const gain = ctx.createGain()
 
