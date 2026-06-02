@@ -3,7 +3,19 @@ import { gsap } from 'gsap'
 import { pauseSmoothScroll, resumeSmoothScroll } from '../hooks/useSmoothScroll'
 import { useTheme } from '../context/ThemeContext'
 import { getProjectColor } from '../utils/colors'
+import useMagnetic from '../hooks/useMagnetic'
+import { playClick, playSwell } from '../utils/audio'
+import WebGLImage from './WebGLImage'
 import styles from './ProjectModal.module.css'
+
+function Magnetic({ children }) {
+  const ref = useMagnetic()
+  return (
+    <div ref={ref} style={{ display: 'inline-flex' }}>
+      {children}
+    </div>
+  )
+}
 
 export default function ProjectModal({ project, onClose, lang }) {
   const { theme } = useTheme()
@@ -15,6 +27,9 @@ export default function ProjectModal({ project, onClose, lang }) {
   // ── On mount: kill Lenis, lock page scroll, block all wheel on bg ──
   useEffect(() => {
     if (!project) return
+
+    // Play synthesized deep swell immediately
+    playSwell()
 
     // 1. Destroy Lenis entirely so its wheel listeners are gone
     pauseSmoothScroll()
@@ -72,7 +87,7 @@ export default function ProjectModal({ project, onClose, lang }) {
 
   // ── Escape key ──
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') triggerClose() }
+    const onKey = (e) => { if (e.key === 'Escape') { playClick(); triggerClose(); } }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
@@ -84,7 +99,7 @@ export default function ProjectModal({ project, onClose, lang }) {
   }
 
   const handleOverlayClick = (e) => {
-    if (e.target === overlayRef.current) triggerClose()
+    if (e.target === overlayRef.current) { playClick(); triggerClose(); }
   }
 
   if (!project) return null
@@ -116,11 +131,13 @@ export default function ProjectModal({ project, onClose, lang }) {
             <span className={`${styles.headerYear} mono`}>{project.year}</span>
             <span className={styles.categoryTag}>{project.category}</span>
           </div>
-          <button className={styles.closeBtn} onClick={triggerClose} aria-label={l.close}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-          </button>
+          <Magnetic>
+            <button className={styles.closeBtn} onClick={() => { playClick(); triggerClose(); }} aria-label={l.close}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
+          </Magnetic>
         </div>
 
         {/* ── Scrollable panel body ── */}
@@ -135,7 +152,7 @@ export default function ProjectModal({ project, onClose, lang }) {
             {/* ── Image Block ── */}
             {project.image ? (
               <div className={styles.imageContainer}>
-                <img src={project.image} alt={project.title} className={styles.image} />
+                <WebGLImage src={project.image} alt={project.title} className={styles.image} />
                 <div className={styles.imageOverlay} style={{ background: `linear-gradient(to bottom, transparent, rgba(0,0,0,0.4))` }} />
               </div>
             ) : (
@@ -196,18 +213,22 @@ export default function ProjectModal({ project, onClose, lang }) {
             </div>
 
             <div className={styles.ctas}>
-              <a href="#" className={styles.ctaPrimary} style={{ background: color }}>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-                {l.liveDemo}
-              </a>
-              <a href="#" className={styles.ctaGhost}>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M7 1C3.686 1 1 3.686 1 7c0 2.652 1.72 4.9 4.104 5.696.3.055.41-.13.41-.29v-1.016c-1.67.363-2.021-.805-2.021-.805-.273-.693-.667-.878-.667-.878-.545-.373.041-.365.041-.365.602.042.92.618.92.618.535.918 1.403.652 1.745.499.054-.388.21-.652.38-.801-1.332-.152-2.732-.666-2.732-2.963 0-.655.234-1.19.617-1.61-.062-.152-.267-.762.059-1.589 0 0 .503-.16 1.648.615A5.74 5.74 0 017 4.58c.51.002 1.022.069 1.502.202 1.144-.776 1.646-.615 1.646-.615.327.827.121 1.437.06 1.589.384.42.616.955.616 1.61 0 2.305-1.403 2.81-2.739 2.958.215.186.407.551.407 1.111v1.647c0 .161.109.348.413.29C11.282 11.898 13 9.65 13 7c0-3.314-2.686-6-6-6z" fill="currentColor"/>
-                </svg>
-                {l.viewCode}
-              </a>
+              <Magnetic>
+                <a href="#" onClick={playClick} className={styles.ctaPrimary} style={{ background: color }}>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  {l.liveDemo}
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a href="#" onClick={playClick} className={styles.ctaGhost}>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 1C3.686 1 1 3.686 1 7c0 2.652 1.72 4.9 4.104 5.696.3.055.41-.13.41-.29v-1.016c-1.67.363-2.021-.805-2.021-.805-.273-.693-.667-.878-.667-.878-.545-.373.041-.365.041-.365.602.042.92.618.92.618.535.918 1.403.652 1.745.499.054-.388.21-.652.38-.801-1.332-.152-2.732-.666-2.732-2.963 0-.655.234-1.19.617-1.61-.062-.152-.267-.762.059-1.589 0 0 .503-.16 1.648.615A5.74 5.74 0 017 4.58c.51.002 1.022.069 1.502.202 1.144-.776 1.646-.615 1.646-.615.327.827.121 1.437.06 1.589.384.42.616.955.616 1.61 0 2.305-1.403 2.81-2.739 2.958.215.186.407.551.407 1.111v1.647c0 .161.109.348.413.29C11.282 11.898 13 9.65 13 7c0-3.314-2.686-6-6-6z" fill="currentColor"/>
+                  </svg>
+                  {l.viewCode}
+                </a>
+              </Magnetic>
             </div>
 
           </div>

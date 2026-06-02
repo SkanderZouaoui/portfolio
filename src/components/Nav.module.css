@@ -53,6 +53,19 @@
 }
 .themeBtn:hover { border-color: var(--accent); color: var(--accent); }
 
+.soundBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.soundBtn:hover { border-color: var(--accent); color: var(--accent); }
+
 .cta {
   font-family: 'DM Mono', monospace; font-size: 10px;
   letter-spacing: 0.12em; text-transform: uppercase;

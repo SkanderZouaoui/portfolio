@@ -12,6 +12,7 @@ import Projects from './components/Projects'
 import Stack from './components/Stack'
 import About from './components/About'
 import Contact from './components/Contact'
+import Experience from './components/Experience'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -44,6 +45,7 @@ function Portfolio() {
           <Hero isLoaded={loaded} />
           <Projects />
           <Stack />
+          <Experience />
           <About />
           <Contact />
         </main>

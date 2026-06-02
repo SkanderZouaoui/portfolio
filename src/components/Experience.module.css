@@ -1,0 +1,195 @@
+.section {
+  padding: 8rem 3rem;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: clamp(3.5rem, 6vw, 7rem);
+  line-height: 0.88;
+  color: var(--text);
+}
+
+.timelineContainer {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ─── Timeline Line ─── */
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 4px,
+    var(--border) 4px,
+    var(--border) 8px
+  );
+}
+
+.timelineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--red));
+  transform-origin: top;
+  will-change: transform;
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* ─── Event Rows ─── */
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.eventRow {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.leftRow {
+  justify-content: flex-start;
+}
+
+.rightRow {
+  justify-content: flex-end;
+}
+
+/* ─── Timeline Nodes ─── */
+.timelineNode {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.leftRow .timelineNode {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.rightRow .timelineNode {
+  border-color: var(--red);
+  box-shadow: 0 0 8px var(--red);
+}
+
+/* ─── Event Cards ─── */
+.eventCard {
+  position: relative;
+  width: calc(50% - 3.5rem);
+  padding: 2.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s, box-shadow 0.4s;
+  box-shadow: 0 8px 30px -15px rgba(0, 0, 0, 0.4);
+}
+
+.eventCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -18px rgba(0, 0, 0, 0.6);
+}
+
+.leftRow .eventCard:hover {
+  border-color: var(--accent);
+}
+
+.rightRow .eventCard:hover {
+  border-color: var(--red);
+}
+
+.year {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.company {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.rightRow .company {
+  color: var(--red);
+}
+
+.desc {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ─── Responsive Styles ─── */
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 3.5rem;
+  }
+
+  .timelineLine {
+    left: 12px;
+    transform: none;
+  }
+
+  .timelineNode {
+    left: 12px;
+    transform: translate(-50%, -50%);
+  }
+
+  .eventRow {
+    justify-content: flex-start;
+  }
+
+  .eventCard {
+    width: calc(100% - 2.5rem);
+    margin-left: 2.5rem;
+    padding: 1.75rem;
+  }
+}

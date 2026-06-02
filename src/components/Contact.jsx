@@ -1,28 +1,32 @@
+import { useRef } from 'react'
 import { useLang } from '../context/LangContext'
 import { t } from '../i18n/translations'
+import useReveal from '../hooks/useReveal'
 import ContactForm from './ContactForm'
 import styles from './Contact.module.css'
 
 export default function Contact() {
   const { lang } = useLang()
   const txt = t[lang].contact
+  const sectionRef = useRef()
+  useReveal(sectionRef)
 
   return (
-    <section className={styles.section} id="contact">
+    <section className={styles.section} id="contact" ref={sectionRef}>
       <div className={styles.inner}>
 
         {/* ── Left column : big title + info ── */}
         <div className={styles.left}>
-          <span className="tag">{txt.tag}</span>
+          <span className="tag" data-reveal="left">{txt.tag}</span>
 
-          <h2 className={`${styles.title} display`}>
+          <h2 className={`${styles.title} display`} data-reveal="text">
             {txt.title[0]}<br />
             <span className={styles.outline}>{txt.title[1]}</span>
           </h2>
 
-          <p className={styles.sub}>{txt.sub}</p>
+          <p className={styles.sub} data-reveal="up" data-reveal-delay="0.1">{txt.sub}</p>
 
-          <div className={styles.contactInfo}>
+          <div className={styles.contactInfo} data-reveal="up" data-reveal-delay="0.2">
             <a
               href="mailto:zouaoui.mohamedskander@gmail.com"
               className={styles.emailLink}
@@ -48,6 +52,8 @@ export default function Contact() {
             href="/CV_Skander_Zouaoui.pdf"
             download="CV_Skander_Zouaoui.pdf"
             className={styles.cvBtn}
+            data-reveal="up"
+            data-reveal-delay="0.25"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -55,7 +61,7 @@ export default function Contact() {
             {lang === 'en' ? 'Download CV' : 'Télécharger CV'}
           </a>
 
-          <div className={styles.availability}>
+          <div className={styles.availability} data-reveal="up" data-reveal-delay="0.3">
             <span className={styles.availDot} />
             <span className="mono" style={{ fontSize: '11px', color: 'var(--muted)' }}>
               {lang === 'en' ? 'Available for new projects' : 'Disponible pour nouveaux projets'}
@@ -64,7 +70,7 @@ export default function Contact() {
         </div>
 
         {/* ── Right column : form ── */}
-        <div className={styles.right}>
+        <div className={styles.right} data-reveal="fade" data-reveal-delay="0.2">
           <ContactForm />
         </div>
 

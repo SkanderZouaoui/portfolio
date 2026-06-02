@@ -163,6 +163,42 @@ export const t = {
       ],
       tools: ['Figma', 'Git / GitHub', 'Docker', 'Postman', 'Jira', 'Azure DevOps', 'REST APIs', 'JWT Auth', 'MERN Stack'],
     },
+    experience: {
+      tag: 'Journey',
+      title: 'EXPERIENCE',
+      items: [
+        {
+          year: '2024 (6 mos.)',
+          title: 'QA Automation Engineer',
+          company: 'SINORFI',
+          desc: 'Architected and built the TNR Automation end-to-end platform. Synced with Azure DevOps, orchestrated Selenium web execution, auto-generated testing reports, and speeded regression time by 70%.'
+        },
+        {
+          year: '2023 (3 mos.)',
+          title: 'Full-Stack Developer Intern',
+          company: 'INFOplus',
+          desc: 'Designed and deployed the EduSpace intranet SaaS dashboard. Structured role-based student schedules, grades, and real-time absence tracking using React, Node.js, and MongoDB.'
+        },
+        {
+          year: '2023',
+          title: 'Frontend Lead',
+          company: 'AssocNet (Academic)',
+          desc: 'Led a team of 4 to design a community platform for non-profit organizations. Handled the media pipeline via Cloudinary and implemented real-time messaging using Socket.io.'
+        },
+        {
+          year: '2021 (3 mos.)',
+          title: 'Web Developer Intern',
+          company: 'Municipality of Bizerte',
+          desc: 'Shipped CityPulse civic application. Enabled GPS geolocated citizen incident reports and mapped bus schedule feeds with Leaflet.js, HTML, and Symfony.'
+        },
+        {
+          year: '2024',
+          title: 'Software Engineering Degree',
+          company: 'ESPRIT Top School',
+          desc: 'Completed rigorous 5-year engineering curriculum specializing in web applications, software design patterns, enterprise architectures, and robust QA methodologies.'
+        }
+      ]
+    },
     about: {
       tag: 'About',
       bio: [
@@ -371,6 +407,42 @@ export const t = {
         { name: 'Azure DevOps', level: 80, cat: 'QA' },
       ],
       tools: ['Figma', 'Git / GitHub', 'Docker', 'Postman', 'Jira', 'Azure DevOps', 'REST APIs', 'JWT Auth', 'Stack MERN'],
+    },
+    experience: {
+      tag: 'Parcours',
+      title: 'EXPÉRIENCE',
+      items: [
+        {
+          year: '2024 (6 mois)',
+          title: 'Ingénieur Automatisation QA',
+          company: 'SINORFI',
+          desc: 'Conçu et réalisé la plateforme de TNR Automation. Synchronisation Azure DevOps, orchestration de tests Selenium, génération de rapports PDF auto, réduction du temps de test de 70%.'
+        },
+        {
+          year: '2023 (3 mois)',
+          title: 'Stage Développeur Full-Stack',
+          company: 'INFOplus',
+          desc: 'Développé le portail intranet SaaS EduSpace. Système complet de gestion de notes, plannings et absences temps réel par rôle étudiant/admin avec React, Node.js, et MongoDB.'
+        },
+        {
+          year: '2023',
+          title: 'Lead Frontend',
+          company: 'AssocNet (Académique)',
+          desc: 'Dirigé l\'équipe frontend (4 pers.) sur un réseau social dédié aux associations. Intégration Cloudinary pour les fichiers et chat temps réel via des serveurs de sockets.'
+        },
+        {
+          year: '2021 (3 mois)',
+          title: 'Stage Développeur Web',
+          company: 'Municipalité de Bizerte',
+          desc: 'Développé la civic-app CityPulse. Implémenté le signalement géolocalisé GPS citoyen et connecté les horaires de bus temps réel avec Leaflet.js et Symfony.'
+        },
+        {
+          year: '2024',
+          title: 'Diplôme d\'Ingénieur Informatique',
+          company: 'ESPRIT',
+          desc: 'Validé un cursus complet de 5 ans spécialisé dans le développement d\'applications distribuées, architectures d\'entreprise et méthodologies de test avancées.'
+        }
+      ]
     },
     about: {
       tag: 'À propos',

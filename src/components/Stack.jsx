@@ -121,7 +121,7 @@ export default function Stack() {
       <div className={styles.header}>
         <div>
           <span className="tag" data-reveal="left">{txt.tag}</span>
-          <h2 className={`${styles.title} display`} data-reveal="up">{txt.title}</h2>
+          <h2 className={`${styles.title} display`} data-reveal="text">{txt.title}</h2>
         </div>
         <div className={styles.filters} data-stagger="0.06">
           {txt.categories.map((cat, i) => (

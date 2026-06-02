@@ -6,6 +6,7 @@ import useReveal from '../hooks/useReveal'
 import ProjectModal from './ProjectModal'
 import { useTheme } from '../context/ThemeContext'
 import { getProjectColor } from '../utils/colors'
+import { playClick } from '../utils/audio'
 import styles from './Projects.module.css'
 
 function ProjectCard({ project, index, onClick, theme }) {
@@ -95,6 +96,7 @@ export default function Projects() {
   useReveal(sectionRef)
 
   const openModal = (project) => {
+    playClick()
     setSelectedProject(project)
     setModalKey(k => k + 1)
   }
@@ -107,7 +109,7 @@ export default function Projects() {
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <span className="tag" data-reveal="left">{txt.tag}</span>
-            <h2 className={`${styles.sectionTitle} display`} data-reveal="up">{txt.title}</h2>
+            <h2 className={`${styles.sectionTitle} display`} data-reveal="text">{txt.title}</h2>
           </div>
           <p className={styles.headerDesc} data-reveal="right">
             {txt.desc}<br />

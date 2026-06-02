@@ -12,6 +12,17 @@ if (typeof window !== 'undefined') {
   })
 }
 
+/* ─── Scroll progress tracker shared across meshes ─── */
+const scroll = { progress: 0, targetProgress: 0 }
+if (typeof window !== 'undefined') {
+  window.addEventListener('scroll', () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+    if (maxScroll > 0) {
+      scroll.targetProgress = window.scrollY / maxScroll
+    }
+  }, { passive: true })
+}
+
 /* ─── Ribbon / DNA helix ─── */
 function Helix() {
   const groupRef = useRef()
@@ -175,17 +186,41 @@ function NoiseSphere() {
   const uniforms = useMemo(() => ({ uTime: { value: 0 } }), [])
 
   return (
-    <mesh ref={meshRef} position={[-2.8, 0, -2]} scale={1.4}>
-      <icosahedronGeometry args={[1, 64]} />
-      <shaderMaterial
-        ref={matRef}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={uniforms}
-        transparent
-        side={THREE.DoubleSide}
-      />
-    </mesh>
+    <group>
+      <mesh ref={meshRef} position={[-2.8, 0, -2]} scale={1.4}>
+        <icosahedronGeometry args={[1, 64]} />
+        <shaderMaterial
+          ref={matRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={uniforms}
+          transparent
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {/* Shifting Pink/Red Atmospheric Aura */}
+      <mesh position={[-2.8, 0, -2]} scale={1.8}>
+        <sphereGeometry args={[1.05, 32, 32]} />
+        <meshBasicMaterial
+          color="#FF4D4D"
+          transparent
+          opacity={0.15}
+          blending={THREE.AdditiveBlending}
+          side={THREE.BackSide}
+        />
+      </mesh>
+      {/* Outer Lime Glow Halo */}
+      <mesh position={[-2.8, 0, -2]} scale={2.2}>
+        <sphereGeometry args={[1.05, 32, 32]} />
+        <meshBasicMaterial
+          color="#C8FF00"
+          transparent
+          opacity={0.08}
+          blending={THREE.AdditiveBlending}
+          side={THREE.BackSide}
+        />
+      </mesh>
+    </group>
   )
 }
 
@@ -202,13 +237,13 @@ function ParticleField() {
       const theta = Math.random() * Math.PI * 2
       const phi = Math.acos(2 * Math.random() - 1)
       const r = 3 + Math.random() * 4
-      pos[i*3]   = r * Math.sin(phi) * Math.cos(theta)
-      pos[i*3+1] = r * Math.sin(phi) * Math.sin(theta)
-      pos[i*3+2] = r * Math.cos(phi)
+      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta)
+      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
+      pos[i * 3 + 2] = r * Math.cos(phi)
       const accent = Math.random() > 0.65
-      col[i*3]   = accent ? 0.78 : 0.4
-      col[i*3+1] = accent ? 1.0  : 0.4
-      col[i*3+2] = accent ? 0.0  : 0.5
+      col[i * 3] = accent ? 0.78 : 0.4
+      col[i * 3 + 1] = accent ? 1.0 : 0.4
+      col[i * 3 + 2] = accent ? 0.0 : 0.5
       sz[i] = Math.random() * 0.04 + 0.01
     }
     return { positions: pos, colors: col, sizes: sz }
@@ -243,13 +278,93 @@ function Rings() {
   return (
     <group ref={group} position={[2.5, 0.5, -1]}>
       {[1.0, 1.4, 1.8].map((r, i) => (
-        <mesh key={i} rotation={[Math.PI/2 + i * 0.4, i * 0.5, 0]}>
-          <torusGeometry args={[r, 0.012, 8, 100]} />
-          <meshBasicMaterial color={i === 0 ? '#C8FF00' : '#ffffff'} transparent opacity={0.25 - i * 0.05} />
-        </mesh>
+        <group key={i}>
+          {/* Main Ring */}
+          <mesh rotation={[Math.PI / 2 + i * 0.4, i * 0.5, 0]}>
+            <torusGeometry args={[r, 0.012, 8, 100]} />
+            <meshBasicMaterial color={i === 0 ? '#C8FF00' : '#ffffff'} transparent opacity={0.25 - i * 0.05} />
+          </mesh>
+          {/* Neon Glow Outlines (Additive, lower opacity, wider radius) */}
+          <mesh rotation={[Math.PI / 2 + i * 0.4, i * 0.5, 0]}>
+            <torusGeometry args={[r, 0.045, 8, 100]} />
+            <meshBasicMaterial
+              color={i === 0 ? '#C8FF00' : '#ffffff'}
+              transparent
+              opacity={0.14 - i * 0.03}
+              blending={THREE.AdditiveBlending}
+            />
+          </mesh>
+        </group>
       ))}
     </group>
   )
+}
+
+function SceneCameraRig() {
+  const { camera } = useThree()
+
+  useFrame((state) => {
+    // 1. Smoothly interpolate scroll progress
+    scroll.progress += (scroll.targetProgress - scroll.progress) * 0.065
+
+    // 2. Smoothly interpolate mouse coordinates
+    mouse.x += (mouse.tx - mouse.x) * 0.05
+    mouse.y += (mouse.ty - mouse.y) * 0.05
+
+    // Camera flight path based on page sections:
+    // Sections: Hero (0.0) -> Projects (0.2) -> Stack (0.4) -> Experience (0.6) -> About (0.8) -> Contact (1.0)
+    let targetX = 0
+    let targetY = 0
+    let targetZ = 7
+
+    const p = Math.max(0, Math.min(1, scroll.progress))
+    if (p <= 0.20) {
+      // Hero to Projects (Blob focus on left)
+      const t = p / 0.20
+      targetX = THREE.MathUtils.lerp(0, -2.8, t)
+      targetY = THREE.MathUtils.lerp(0, 0.4, t)
+      targetZ = THREE.MathUtils.lerp(7, 5.8, t)
+    } else if (p <= 0.40) {
+      // Projects to Stack (Rings focus on right)
+      const t = (p - 0.20) / 0.20
+      targetX = THREE.MathUtils.lerp(-2.8, 2.5, t)
+      targetY = THREE.MathUtils.lerp(0.4, -0.4, t)
+      targetZ = THREE.MathUtils.lerp(5.8, 6.4, t)
+    } else if (p <= 0.60) {
+      // Stack to Experience (Full wide particle field view)
+      const t = (p - 0.40) / 0.20
+      targetX = THREE.MathUtils.lerp(2.5, 0, t)
+      targetY = THREE.MathUtils.lerp(-0.4, -0.8, t)
+      targetZ = THREE.MathUtils.lerp(6.4, 7.2, t)
+    } else if (p <= 0.80) {
+      // Experience to About (Close-up double helix)
+      const t = (p - 0.60) / 0.20
+      targetX = THREE.MathUtils.lerp(0, -2.0, t)
+      targetY = THREE.MathUtils.lerp(-0.8, 0.6, t)
+      targetZ = THREE.MathUtils.lerp(7.2, 5.0, t)
+    } else {
+      // About to Contact (Distant overview)
+      const t = (p - 0.80) / 0.20
+      targetX = THREE.MathUtils.lerp(-2.0, 0, t)
+      targetY = THREE.MathUtils.lerp(0.6, -1.2, t)
+      targetZ = THREE.MathUtils.lerp(5.0, 8.0, t)
+    }
+
+    // Apply spring-based mouse parallax offsets to camera coordinates
+    const posX = targetX + mouse.x * 0.45
+    const posY = targetY + mouse.y * 0.35
+    const posZ = targetZ
+
+    camera.position.x += (posX - camera.position.x) * 0.08
+    camera.position.y += (posY - camera.position.y) * 0.08
+    camera.position.z += (posZ - camera.position.z) * 0.08
+
+    // Smoothly direct camera focus
+    const lookTarget = new THREE.Vector3(mouse.x * 0.2, mouse.y * 0.2, 0)
+    camera.lookAt(lookTarget)
+  })
+
+  return null
 }
 
 /* ─── Canvas ─── */
@@ -269,6 +384,7 @@ export default function Scene() {
       <NoiseSphere />
       <ParticleField />
       <Rings />
+      <SceneCameraRig />
     </Canvas>
   )
 }

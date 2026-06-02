@@ -19,7 +19,7 @@ export default function About() {
           <span className="tag" data-reveal="left">
             {txt.tag}
           </span>
-          <h2 className={`${styles.title} display`} data-reveal="clip">
+          <h2 className={`${styles.title} display`} data-reveal="text">
             SKANDER
             <br />
             <span className={styles.italic}>ZOUAOUI</span>

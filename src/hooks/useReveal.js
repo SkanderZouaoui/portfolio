@@ -4,9 +4,31 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+function splitTextIntoWords(element) {
+  if (element.querySelector('.reveal-word-wrapper')) return
+  const text = element.innerText.trim()
+  element.innerHTML = ''
+  
+  text.split(/\s+/).forEach(word => {
+    const wrapper = document.createElement('span')
+    wrapper.className = 'reveal-word-wrapper'
+    wrapper.style.display = 'inline-block'
+    wrapper.style.overflow = 'hidden'
+    wrapper.style.verticalAlign = 'bottom'
+    
+    const inner = document.createElement('span')
+    inner.className = 'reveal-word'
+    inner.style.display = 'inline-block'
+    inner.innerText = word + '\u00A0'
+    
+    wrapper.appendChild(inner)
+    element.appendChild(wrapper)
+  })
+}
+
 /**
  * useReveal — animates children with data-reveal attributes on scroll
- * Supported: data-reveal="up|left|right|scale|rotate|clip"
+ * Supported: data-reveal="up|left|right|scale|rotate|clip|text"
  * data-reveal-delay="0.2"  (seconds)
  * data-reveal-stagger="0.08"
  */
@@ -15,10 +37,35 @@ export default function useReveal(containerRef) {
     if (!containerRef.current) return
 
     const ctx = gsap.context(() => {
+      // Cinematic masked word reveal
+      const textEls = containerRef.current.querySelectorAll('[data-reveal="text"]')
+      textEls.forEach(el => {
+        splitTextIntoWords(el)
+        const words = el.querySelectorAll('.reveal-word')
+        const delay = parseFloat(el.dataset.revealDelay || 0)
+        const duration = parseFloat(el.dataset.revealDuration || 1.1)
+
+        gsap.from(words, {
+          y: '110%',
+          rotation: 3,
+          transformOrigin: 'left top',
+          duration,
+          delay,
+          stagger: 0.04,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 92%',
+            toggleActions: 'play none none none',
+          },
+        })
+      })
+
       // Generic reveal elements
       const els = containerRef.current.querySelectorAll('[data-reveal]')
       els.forEach(el => {
         const type = el.dataset.reveal || 'up'
+        if (type === 'text') return // Handled separately above
         const delay = parseFloat(el.dataset.revealDelay || 0)
         const duration = parseFloat(el.dataset.revealDuration || 0.9)
 
