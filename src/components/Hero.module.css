@@ -36,11 +36,35 @@
   padding: 0 3rem 2.5rem;
 }
 
+/* Gradient scrim behind text so it stays readable over 3D scene */
+.content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(to top,
+      var(--bg) 0%,
+      color-mix(in srgb, var(--bg) 75%, transparent) 35%,
+      color-mix(in srgb, var(--bg) 30%, transparent) 65%,
+      transparent 100%);
+}
+
+:global([data-theme="light"]) .content::before {
+  background: linear-gradient(to top,
+      var(--bg) 0%,
+      color-mix(in srgb, var(--bg) 45%, transparent) 30%,
+      color-mix(in srgb, var(--bg) 10%, transparent) 60%,
+      transparent 100%);
+}
+
+
 .topRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  text-shadow: 0 1px 8px color-mix(in srgb, var(--bg) 40%, transparent);
 }
 
 .scroll {
@@ -56,6 +80,7 @@
   letter-spacing: -0.01em;
   color: var(--text);
   margin-bottom: 1.5rem;
+  text-shadow: 0 2px 16px color-mix(in srgb, var(--bg) 70%, transparent);
 }
 
 .line {
@@ -88,6 +113,7 @@
   letter-spacing: 0.06em;
   line-height: 2;
   color: var(--text);
+  text-shadow: 0 1px 8px color-mix(in srgb, var(--bg) 60%, transparent);
 }
 
 .stats {

@@ -3,7 +3,7 @@ import { useLang } from '../context/LangContext'
 import { t } from '../i18n/translations'
 import useReveal from '../hooks/useReveal'
 import styles from './About.module.css'
-import profilImg from '../assets/profile.png'
+import ProfileScene3D from './ProfileScene3D'
 
 
 export default function About() {
@@ -29,9 +29,7 @@ export default function About() {
             data-reveal="scale"
             data-reveal-delay="0.2"
           >
-            <div className={styles.imgPlaceholder}>
-              <img src={profilImg} alt="Skander Zouaoui" className={styles.image} />
-            </div>
+            <ProfileScene3D className={styles.imgPlaceholder} />
             {/*<span className={`${styles.imgLabel} mono`}>Photo</span>*/}
             <div className={styles.imgBorder} />
             {/* Decorative corner marks */}
