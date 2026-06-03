@@ -31,12 +31,12 @@ export const projects = [
   },
   {
     id: '04',
-    title: 'CityPulse',
+    title: 'City in Your Pocket',
     category: 'Civic Tech · Web App',
     year: '2021',
-    description: 'Citizen-facing web platform giving real-time access to municipal services for Bizerte smart city. Integrated public transport, incident reporting, and local news with a Symfony backend and responsive UI.',
+    description: 'Local web application designed to help residents and newcomers easily discover the best places and services in a city. It brings together restaurants, leisure activities, daily services such as plumbers and carpenters, as well as entertainment spaces like football fields, tennis courts, and other local activities.',
     stack: ['Symfony', 'PHP', 'MySQL', 'REST API'],
     color: '#C8FF00',
     size: 'large',
-  },
+  }
 ]

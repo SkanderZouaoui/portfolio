@@ -3,7 +3,7 @@ import { useLang } from '../context/LangContext'
 import { t } from '../i18n/translations'
 import useReveal from '../hooks/useReveal'
 import styles from './About.module.css'
-import profilImg from '../assets/IMG_3346.jpeg'
+import profilImg from '../assets/profile.png'
 
 
 export default function About() {

@@ -70,19 +70,25 @@ export const t = {
         },
         {
           id: '04',
-          title: 'CityPulse',
+          title: 'City in Your Pocket',
           category: 'Civic Tech · Web App',
           year: '2021',
           color: '#C8FF00',
-          description: 'Citizen platform giving real-time access to municipal services for Bizerte smart city. Integrated public transport, incident reporting, and local news.',
+          description: 'Local web platform designed to help residents and newcomers discover the best places, services, and activities available in a city.',
           details: {
-            overview: 'First professional internship project — a civic web application for Bizerte smart city initiative allowing citizens to access city services from a single interface: bus schedules, pothole/incident reporting with geolocation, municipal news and announcements, and permit request tracking.',
-            challenges: 'Learning Symfony from scratch while delivering a production-ready application. Designing a geolocation-based incident reporting feature with map integration.',
-            results: ['Incident reporting with GPS coordinates and photo upload', 'Live bus schedule integration via city API', 'Permit request workflow with status tracking', 'Responsive UI accessible on mobile'],
-            role: 'Full-stack developer (internship)',
+            overview: 'A civic web application that centralizes essential city information in one accessible platform. The app helps users explore restaurants, leisure activities, daily services such as plumbers and carpenters, as well as entertainment and sports facilities like football fields, tennis courts, and other local venues.',
+            challenges: 'Building a user-friendly platform that organizes different types of city services and places in a clear and accessible way. The main challenge was designing an intuitive experience for newcomers who need quick access to reliable local information.',
+            results: [
+              'Centralized access to restaurants, leisure activities, and local services',
+              'Easy discovery of daily services such as plumbers, carpenters, and other professionals',
+              'Listing of entertainment and sports facilities including football fields and tennis courts',
+              'Responsive interface accessible on desktop and mobile devices'
+            ],
+            role: 'Full-stack developer',
           },
-          stack: ['Symfony', 'PHP', 'MySQL', 'Leaflet.js', 'REST API', 'Bootstrap'],
+          stack: ['Symfony', 'PHP', 'MySQL', 'REST API', 'Bootstrap'],
         },
+
         {
           id: '05',
           title: 'DevFolio',
@@ -168,41 +174,47 @@ export const t = {
       title: 'EXPERIENCE',
       items: [
         {
-          year: '2024 (6 mos.)',
-          title: 'QA Automation Engineer',
-          company: 'SINORFI',
-          desc: 'Architected and built the TNR Automation end-to-end platform. Synced with Azure DevOps, orchestrated Selenium web execution, auto-generated testing reports, and speeded regression time by 70%.'
+          year: '2021 (1 mo.)',
+          title: 'Web Developer Intern',
+          company: 'Bizerte Smart City',
+          desc: 'Developed City in Your Pocket, a local web application helping residents and newcomers easily discover restaurants, leisure activities, daily services, and entertainment spots in their city.'
         },
         {
           year: '2023 (3 mos.)',
           title: 'Full-Stack Developer Intern',
+          company: 'VERMEG',
+          desc: 'Contributed to the full-stack development of a web project during an internship, working within a team of 4 people. Built user interfaces, developed backend APIs, integrated Cloudinary for media management, and implemented real-time chat with Socket.io.'
+        },
+        {
+          year: '2022 (4 mos.)',
+          title: 'Full-Stack Developer Intern',
           company: 'INFOplus',
-          desc: 'Designed and deployed the EduSpace intranet SaaS dashboard. Structured role-based student schedules, grades, and real-time absence tracking using React, Node.js, and MongoDB.'
+          desc: 'Developed the EduSpace SaaS intranet portal, a complete system for managing grades, schedules, and real-time absences with student and admin role-based access using React, Node.js, and MongoDB.'
         },
         {
-          year: '2023',
-          title: 'Frontend Lead',
-          company: 'AssocNet (Academic)',
-          desc: 'Led a team of 4 to design a community platform for non-profit organizations. Handled the media pipeline via Cloudinary and implemented real-time messaging using Socket.io.'
+          year: '2024 (6 mos.)',
+          title: 'QA Automation Engineer Intern',
+          company: 'SINORFI',
+          desc: 'Designed and developed the TNR Automation platform. Integrated Azure DevOps synchronization, Selenium test orchestration, automatic PDF report generation, and reduced regression testing time by 70%.'
         },
         {
-          year: '2021 (3 mos.)',
-          title: 'Web Developer Intern',
-          company: 'Municipality of Bizerte',
-          desc: 'Shipped CityPulse civic application. Enabled GPS geolocated citizen incident reports and mapped bus schedule feeds with Leaflet.js, HTML, and Symfony.'
-        },
-        {
-          year: '2024',
+          year: 'January 2025',
           title: 'Software Engineering Degree',
-          company: 'ESPRIT Top School',
-          desc: 'Completed rigorous 5-year engineering curriculum specializing in web applications, software design patterns, enterprise architectures, and robust QA methodologies.'
+          company: 'ESPRIT',
+          desc: 'Completed a 5-year engineering curriculum focused on distributed application development, enterprise architectures, and advanced testing methodologies.'
+        },
+        {
+          year: '2025 — Present',
+          title: 'Software Engineer',
+          company: 'SINORFI',
+          desc: 'Started working at SINORFI as a Software Engineer, contributing to the development of internal tools, automation solutions, and web applications focused on improving technical workflows and delivery quality.'
         }
       ]
     },
     about: {
       tag: 'About',
       bio: [
-        'Software engineer graduated from ESPRIT, Tunis — I build fast, scalable web applications and automation systems that solve real problems.',
+        'Software engineer, I build fast, scalable web applications and automation systems that solve real problems.',
         'My work spans full-stack development, QA automation, and data-driven interfaces. I\'ve shipped projects across civic tech, edtech, and enterprise tooling.',
         'Currently open to freelance missions and remote contracts. I bring engineering rigor, strong communication, and a bias for shipping.',
       ],
@@ -212,7 +224,7 @@ export const t = {
         { label: 'Availability', value: 'Open to missions' },
         { label: 'Stack', value: 'React · Node.js · Spring Boot' },
         { label: 'Languages', value: 'French · English · Arabic' },
-        { label: 'Education', value: 'Ing. Informatique — ESPRIT 2024' },
+        { label: 'Education', value: 'Software Engineer' },
       ],
       social: [
         { label: 'LinkedIn', href: 'https://linkedin.com/in/skander-zouaouii' },
@@ -269,125 +281,257 @@ export const t = {
       desc2: 'des outils enterprise à la civic tech.',
       items: [
         {
-          id: '01',
-          title: 'TNR Automation',
-          category: 'Outil QA · Enterprise',
-          year: '2024',
-          color: '#C8FF00',
-          description: 'Plateforme d\'automatisation des TNR pour SINORFI, synchronisée avec Azure DevOps. Récupération automatique des plans de test, exécution via Selenium, rapports PDF. Réduction du temps de test de 70%.',
+          id: "01",
+          title: "Automatisation TNR",
+          category: "Outil QA · Entreprise",
+          year: "2024",
+          color: "#C8FF00",
+          description:
+            "Solution d’automatisation des tests de non-régression développée pour SINORFI et connectée à Azure DevOps. Elle récupère automatiquement les plans de test, exécute les scénarios avec Selenium et génère des rapports PDF, avec une réduction du temps de test de 70%.",
           details: {
-            overview: 'Développé durant un stage de 6 mois chez SINORFI, cet outil a remplacé un processus de test de régression manuel qui prenait plusieurs jours. Le système s\'intègre directement aux APIs Azure DevOps pour récupérer les plans et cas de test, orchestre l\'exécution Selenium WebDriver, et produit des rapports HTML/PDF structurés avec métriques pass/fail, captures d\'écran des échecs et graphiques de tendance.',
-            challenges: 'Synchroniser les métadonnées Azure DevOps en temps réel sans problèmes de rate-limiting. Gérer les tests instables avec un mécanisme de retry automatique et un score de confiance.',
-            results: ['Réduction de 70% du temps de cycle de test', 'Zéro rédaction manuelle de rapports', 'Intégré dans la CI/CD — déclenché à chaque merge PR', 'Traçabilité complète Azure DevOps → résultat d\'exécution'],
-            role: 'Développeur full-stack — seul ingénieur sur le projet',
+            overview:
+              "Développé pendant un stage de 6 mois chez SINORFI, cet outil a permis de remplacer un processus manuel de tests de régression qui nécessitait plusieurs jours. La plateforme s’intègre aux API Azure DevOps pour récupérer les plans et cas de test, pilote l’exécution via Selenium WebDriver et génère des rapports HTML/PDF détaillés incluant les métriques de réussite, les échecs, les captures d’écran et les tendances.",
+            challenges:
+              "Assurer la synchronisation en temps réel des données Azure DevOps tout en évitant les limites d’appel API. Il fallait aussi gérer les tests instables grâce à un système de relance automatique et un score de fiabilité.",
+            results: [
+              "Réduction de 70% du cycle de tests",
+              "Suppression de la rédaction manuelle des rapports",
+              "Intégration au pipeline CI/CD avec déclenchement à chaque merge request",
+              "Traçabilité complète entre Azure DevOps et les résultats d’exécution"
+            ],
+            role: "Développeur full-stack — seul ingénieur sur le projet"
           },
-          stack: ['Spring Boot', 'Angular', 'Selenium', 'Azure DevOps', 'PostgreSQL', 'JUnit'],
+          stack: [
+            "Spring Boot",
+            "Angular",
+            "Selenium",
+            "Azure DevOps",
+            "PostgreSQL",
+            "JUnit"
+          ]
         },
+
         {
-          id: '02',
-          title: 'EduSpace',
-          category: 'SaaS · EdTech',
-          year: '2023',
-          color: '#FF4D4D',
-          description: 'Plateforme intranet full-stack pour INFOplus, gérant formations, notes, emplois du temps et absences. Dashboard temps réel avec accès différencié par rôle.',
+          id: "02",
+          title: "Espace Éducatif",
+          category: "SaaS · Technologie éducative",
+          year: "2023",
+          color: "#FF4D4D",
+          description:
+            "Plateforme intranet full-stack conçue pour INFOplus, permettant de gérer les formations, les notes, les emplois du temps et les absences, avec un tableau de bord en temps réel adapté à chaque type d’utilisateur.",
           details: {
-            overview: 'Plateforme de gestion éducative complète développée pour INFOplus durant un stage. Le système gère le cycle de vie complet de l\'étudiant — inscription, planification des cours, saisie des notes, suivi des absences avec alertes automatiques, et tableau de bord admin avec analytics sur la performance des promotions.',
-            challenges: 'Concevoir un système de permissions par rôle propre où étudiants, enseignants et admins voient une interface radicalement différente depuis le même codebase. Notifications d\'absence en temps réel via WebSocket.',
-            results: ['3 rôles utilisateurs avec des UX distinctes depuis un seul codebase React', 'Notifications temps réel sur absences et notes', 'Interface responsive adoptée par 200+ étudiants'],
-            role: 'Développeur full-stack (stage)',
+            overview:
+              "Plateforme complète de gestion éducative développée pour INFOplus durant un stage. Elle couvre tout le parcours étudiant, de l’inscription à la planification des cours, en passant par la saisie des notes, le suivi des absences avec alertes automatiques et un tableau de bord administratif avec des indicateurs de performance.",
+            challenges:
+              "Mettre en place un système de permissions clair permettant aux étudiants, enseignants et administrateurs d’accéder à des interfaces différentes depuis une seule base de code. Le projet intègre aussi des notifications en temps réel grâce à WebSocket.",
+            results: [
+              "Trois rôles utilisateurs avec des expériences distinctes depuis une seule application React",
+              "Notifications instantanées pour les absences et les notes",
+              "Interface responsive utilisée par plus de 200 étudiants"
+            ],
+            role: "Développeur full-stack — stage"
           },
-          stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'JWT'],
+          stack: [
+            "React.js",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Socket.io",
+            "JWT"
+          ]
         },
+
         {
-          id: '03',
-          title: 'AssocNet',
-          category: 'Plateforme Sociale · MERN',
-          year: '2023',
-          color: '#8B5CF6',
-          description: 'Réseau social dédié aux associations — création d\'événements, gestion des membres, fil d\'actualité et messagerie temps réel. Stack MERN avec auth JWT.',
+          id: "03",
+          title: "Réseau Associatif",
+          category: "Plateforme sociale · MERN",
+          year: "2023",
+          color: "#8B5CF6",
+          description:
+            "Plateforme sociale dédiée aux associations, permettant de publier des actualités, organiser des événements, gérer les membres et communiquer en temps réel grâce à une messagerie intégrée.",
           details: {
-            overview: 'Projet académique réalisé en équipe de 4. AssocNet est une plateforme sociale dédiée aux associations pour publier des causes, recruter des bénévoles, organiser des événements et communiquer avec les membres. L\'algorithme de fil d\'actualité remonte du contenu selon les tags d\'intérêt.',
-            challenges: 'Construire un pipeline d\'upload média scalable avec Cloudinary et gérer le chat temps réel avec des salles Socket.io par association.',
-            results: ['Chat temps réel avec salles par association', 'Création d\'événements avec suivi des présences et check-in QR', 'Filtrage du fil par centres d\'intérêt', 'Uploads médias avec compression automatique'],
-            role: 'Lead frontend + API backend (équipe de 4)',
+            overview:
+              "Projet académique réalisé en équipe de 4 personnes. Cette plateforme permet aux associations de partager leurs causes, recruter des bénévoles, organiser des événements et échanger avec leurs membres. Le fil d’actualité met en avant le contenu selon les centres d’intérêt des utilisateurs.",
+            challenges:
+              "Créer un système d’upload média évolutif avec Cloudinary et gérer une messagerie temps réel avec des salons Socket.io propres à chaque association.",
+            results: [
+              "Messagerie instantanée avec salons dédiés par association",
+              "Création d’événements avec suivi des présences et check-in par QR code",
+              "Fil d’actualité filtré selon les centres d’intérêt",
+              "Upload média avec compression automatique"
+            ],
+            role: "Lead frontend et contribution API backend — équipe de 4"
           },
-          stack: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Socket.io', 'Cloudinary', 'JWT'],
+          stack: [
+            "MongoDB",
+            "Express.js",
+            "React.js",
+            "Node.js",
+            "Socket.io",
+            "Cloudinary",
+            "JWT"
+          ]
         },
+
         {
-          id: '04',
-          title: 'CityPulse',
-          category: 'Civic Tech · Web App',
-          year: '2021',
-          color: '#C8FF00',
-          description: 'Plateforme citoyenne donnant accès en temps réel aux services municipaux de Bizerte smart city. Transport public, signalement d\'incidents, actualités locales.',
+          id: "04",
+          title: "Ma Ville en Poche",
+          category: "Technologie citoyenne · Application web",
+          year: "2021",
+          color: "#C8FF00",
+          description:
+            "Application web locale pensée pour aider les habitants et les nouveaux arrivants à découvrir facilement les lieux, services, activités et infrastructures disponibles dans leur ville.",
           details: {
-            overview: 'Premier projet de stage — une application web citoyenne pour l\'initiative Bizerte smart city permettant aux habitants d\'accéder aux services depuis une interface unique : horaires de bus, signalement de problèmes avec géolocalisation, actualités et annonces municipales, suivi des demandes de permis.',
-            challenges: 'Apprendre Symfony from scratch tout en livrant une application production-ready. Concevoir une fonctionnalité de signalement géolocalisé avec intégration carte.',
-            results: ['Signalement d\'incidents avec coordonnées GPS et photo', 'Intégration des horaires de bus via API ville', 'Workflow de demande de permis avec suivi de statut', 'UI responsive accessible sur mobile'],
-            role: 'Développeur full-stack (stage)',
+            overview:
+              "Application citoyenne centralisant les informations utiles d’une ville dans une interface simple et accessible. Elle permet de trouver des restaurants, des loisirs, des services du quotidien comme les plombiers ou menuisiers, ainsi que des espaces sportifs et de divertissement tels que les terrains de football et les courts de tennis.",
+            challenges:
+              "Concevoir une plateforme intuitive capable de regrouper plusieurs catégories de lieux et de services. L’objectif principal était d’offrir aux nouveaux arrivants un accès rapide à des informations locales fiables.",
+            results: [
+              "Accès centralisé aux restaurants, loisirs et services locaux",
+              "Découverte simplifiée des professionnels du quotidien",
+              "Mise en avant des espaces de divertissement et des infrastructures sportives",
+              "Interface responsive adaptée aux ordinateurs, tablettes et mobiles"
+            ],
+            role: "Développeur full-stack"
           },
-          stack: ['Symfony', 'PHP', 'MySQL', 'Leaflet.js', 'REST API', 'Bootstrap'],
+          stack: [
+            "Symfony",
+            "PHP",
+            "MySQL",
+            "REST API",
+            "Bootstrap"
+          ]
         },
+
         {
-          id: '05',
-          title: 'DevFolio',
-          category: 'Portfolio · Three.js',
-          year: '2026',
-          color: '#FF4D4D',
-          description: 'Ce portfolio — React, Three.js (hélice ADN + blob GLSL + particules), animations GSAP ScrollTrigger, scroll fluide Lenis, thème dark/light et i18n FR/EN complet.',
+          id: "05",
+          title: "Portfolio Développeur",
+          category: "Portfolio · Three.js",
+          year: "2026",
+          color: "#FF4D4D",
+          description:
+            "Portfolio interactif développé avec React et Three.js, intégrant des animations 3D avancées, GSAP ScrollTrigger, Lenis pour le scroll fluide, un thème clair/sombre et une prise en charge complète du français et de l’anglais.",
           details: {
-            overview: 'Portfolio développeur production-grade construit comme vitrine de compétences frontend. Comprend une scène Three.js custom avec 4 objets animés simultanément (double hélice ADN avec barres, sphère GLSL noise, champ de 1400 particules, anneaux torus flottants), animations GSAP ScrollTrigger, curseur magnétique avec 4 états d\'interaction, et formulaire de contact EmailJS avec fallback mailto mobile.',
-            challenges: 'Orchestrer 4 objets Three.js indépendants à 60fps sans chutes de framerate. Faire coexister Lenis et GSAP ScrollTrigger sans conflits. Supporter les transitions de thème dark/light sans flickering du canvas Three.js.',
-            results: ['Scène Three.js à 60fps avec 4 objets animés', 'i18n complet (EN/FR) persisté en localStorage', 'Thème dark/light avec système de variables CSS', 'Formulaire EmailJS + fallback mailto mobile', 'Score Lighthouse 95+'],
-            role: 'Développeur seul — design & engineering',
+            overview:
+              "Portfolio professionnel conçu comme une vitrine technique frontend. Il intègre une scène Three.js personnalisée composée de plusieurs éléments animés, dont une double hélice ADN, une sphère GLSL, un champ de particules et des anneaux flottants. Le projet comprend aussi des animations GSAP, un curseur magnétique interactif et un formulaire de contact EmailJS avec fallback mobile.",
+            challenges:
+              "Maintenir une scène Three.js fluide à 60fps tout en animant plusieurs objets indépendants. Il fallait aussi synchroniser Lenis avec GSAP ScrollTrigger et gérer les transitions de thème clair/sombre sans clignotement du canvas.",
+            results: [
+              "Scène Three.js fluide avec plusieurs objets animés",
+              "Internationalisation complète français/anglais avec sauvegarde locale",
+              "Thème clair/sombre basé sur des variables CSS",
+              "Formulaire EmailJS avec fallback mailto sur mobile",
+              "Score Lighthouse supérieur à 95"
+            ],
+            role: "Développeur seul — design et développement"
           },
-          stack: ['React', 'Three.js', 'GSAP', 'Lenis', 'EmailJS', 'Vite', 'CSS Modules'],
+          stack: [
+            "React",
+            "Three.js",
+            "GSAP",
+            "Lenis",
+            "EmailJS",
+            "Vite",
+            "CSS Modules"
+          ]
         },
+
         {
-          id: '06',
-          title: 'ITECH E-Commerce',
-          category: 'Multiplateforme · E-Commerce',
-          year: '2022',
-          color: '#8B5CF6',
-          description: 'Application e-commerce multiplateforme pour produits ITECH — une seule base de données partagée alimentant un site Symfony, un client desktop JavaFX et une app mobile CodenameOne.',
+          id: "06",
+          title: "Boutique en Ligne ITECH",
+          category: "Multiplateforme · E-commerce",
+          year: "2022",
+          color: "#8B5CF6",
+          description:
+            "Solution e-commerce multiplateforme pour les produits ITECH, reposant sur une base de données partagée entre un site web Symfony, une application desktop JavaFX et une application mobile CodenameOne.",
           details: {
-            overview: 'Projet académique démontrant des compétences multiplateforme. Un seul backend REST API alimente trois frontends distincts : un site web Symfony responsive, une application desktop JavaFX riche pour la gestion du magasin, et une app mobile CodenameOne pour les clients. Les trois partagent la même base MySQL avec synchronisation d\'inventaire en temps réel.',
-            challenges: 'Concevoir une API REST assez abstraite pour servir 3 types de clients radicalement différents. Garder les UIs JavaFX et web synchronisées sur les changements d\'inventaire sans polling.',
-            results: ['API REST unique servant 3 plateformes simultanément', 'Synchronisation d\'inventaire en temps réel', 'Panel admin JavaFX avec gestion produits/commandes', 'Flow de commande mobile avec historique'],
-            role: 'Développeur full-stack (projet académique en équipe)',
+            overview:
+              "Projet académique démontrant la conception d’une architecture multiplateforme. Une seule API REST alimente trois interfaces différentes : un site web Symfony responsive, une application desktop JavaFX pour la gestion du magasin et une application mobile CodenameOne destinée aux clients. Les trois plateformes partagent une base MySQL commune avec synchronisation de l’inventaire.",
+            challenges:
+              "Concevoir une API REST suffisamment flexible pour répondre aux besoins de trois clients très différents. Le projet nécessitait aussi une synchronisation fiable des interfaces web et desktop lors des changements d’inventaire.",
+            results: [
+              "API REST unique utilisée par trois plateformes",
+              "Synchronisation de l’inventaire en temps réel",
+              "Interface admin JavaFX pour la gestion des produits et commandes",
+              "Parcours de commande mobile avec historique"
+            ],
+            role: "Développeur full-stack — projet académique en équipe"
           },
-          stack: ['Symfony', 'JavaFX', 'CodenameOne', 'Java', 'MySQL', 'REST API'],
+          stack: [
+            "Symfony",
+            "JavaFX",
+            "CodenameOne",
+            "Java",
+            "MySQL",
+            "REST API"
+          ]
         },
+
         {
-          id: '07',
-          title: 'TaskFlow API',
-          category: 'Backend · REST API',
-          year: '2024',
-          color: '#C8FF00',
-          description: 'API REST de gestion de tâches production-grade — Spring Boot, auth JWT, accès par rôle, notifications temps réel WebSocket, docs Swagger, containerisé Docker.',
+          id: "07",
+          title: "API Flux de Tâches",
+          category: "Backend · API REST",
+          year: "2024",
+          color: "#C8FF00",
+          description:
+            "API REST robuste dédiée à la gestion de tâches et de projets, développée avec Spring Boot. Elle intègre l’authentification JWT, la gestion des rôles, les notifications WebSocket, la documentation Swagger et la containerisation Docker.",
           details: {
-            overview: 'Projet personnel pour approfondir Spring Boot et démontrer les bonnes pratiques backend. TaskFlow est une API de gestion de projets avec workspaces, projets, tâches avec priorité/échéances, membres d\'équipe avec permissions par rôle, et diffusion de mises à jour en temps réel via WebSocket.',
-            challenges: 'Implémenter un modèle de permission hiérarchique (propriétaire > manager > contributeur > lecteur) qui passe à l\'échelle sans problèmes N+1. Concevoir un push WebSocket fonctionnant derrière un load balancer.',
-            results: ['Auth JWT + rotation de refresh token', 'Système de permissions par rôle sur 4 niveaux', 'Mises à jour de tâches temps réel via WebSocket', 'Documentation Swagger/OpenAPI 3 complète', 'Dockerisé — démarre avec docker-compose up'],
-            role: 'Développeur seul — projet personnel',
+            overview:
+              "Projet personnel créé pour approfondir Spring Boot et appliquer les bonnes pratiques backend. L’API permet de gérer des espaces de travail, des projets, des tâches avec priorités et échéances, ainsi que des membres d’équipe avec différents niveaux de permissions. Les mises à jour sont diffusées en temps réel via WebSocket.",
+            challenges:
+              "Mettre en place un modèle de permissions hiérarchique efficace, allant du propriétaire au lecteur, sans générer de problèmes de performance. Le projet demandait aussi une architecture WebSocket compatible avec un environnement derrière load balancer.",
+            results: [
+              "Authentification JWT avec rotation des refresh tokens",
+              "Système de permissions basé sur quatre niveaux de rôles",
+              "Mises à jour de tâches en temps réel via WebSocket",
+              "Documentation complète avec Swagger/OpenAPI 3",
+              "Projet dockerisé et exécutable avec docker-compose"
+            ],
+            role: "Développeur seul — projet personnel"
           },
-          stack: ['Spring Boot', 'Java', 'PostgreSQL', 'WebSocket', 'JWT', 'Docker', 'Swagger'],
+          stack: [
+            "Spring Boot",
+            "Java",
+            "PostgreSQL",
+            "WebSocket",
+            "JWT",
+            "Docker",
+            "Swagger"
+          ]
         },
+
         {
-          id: '08',
-          title: 'UI Component Kit',
-          category: 'Frontend · Design System',
-          year: '2024',
-          color: '#FF4D4D',
-          description: 'Bibliothèque de composants React réutilisables — 30+ composants avec variantes dark/light, docs Storybook, TypeScript complet, testés avec Jest + React Testing Library.',
+          id: "08",
+          title: "Kit de Composants d’Interface",
+          category: "Frontend · Système de design",
+          year: "2024",
+          color: "#FF4D4D",
+          description:
+            "Bibliothèque de composants React réutilisables comprenant plus de 30 composants, avec variantes clair/sombre, documentation Storybook, typage TypeScript complet et tests automatisés avec Jest et React Testing Library.",
           details: {
-            overview: 'Projet personnel pour construire et documenter une bibliothèque de composants React from scratch, suivant les principes du design atomique. Comprend des composants primitifs (Button, Input, Badge, Avatar), des composants composés (Modal, Dropdown, Toast) et des composants de layout (Grid, Stack, Divider). Tous avec support dark/light via variables CSS.',
-            challenges: 'Concevoir un système de thème flexible pour dark et light mode sans JS runtime. Écrire des tests unitaires complets pour les composants interactifs comme modals et dropdowns.',
-            results: ['30+ composants suivant l\'Atomic Design', 'Documentation Storybook avec exemples live', 'Types TypeScript et validation de props complètes', 'Suite Jest + RTL avec 85% de couverture', 'Publié sur npm'],
-            role: 'Développeur seul — projet open-source personnel',
+            overview:
+              "Projet personnel visant à concevoir et documenter une bibliothèque de composants React depuis zéro, en suivant les principes du design atomique. Elle regroupe des composants de base comme Button, Input, Badge et Avatar, des composants composés comme Modal, Dropdown et Toast, ainsi que des éléments de layout comme Grid, Stack et Divider.",
+            challenges:
+              "Créer un système de thème flexible compatible avec les modes clair et sombre sans dépendre d’un runtime JavaScript. Il fallait aussi écrire des tests unitaires solides pour les composants interactifs comme les modales et menus déroulants.",
+            results: [
+              "Plus de 30 composants construits selon l’Atomic Design",
+              "Documentation Storybook avec exemples interactifs",
+              "Typage TypeScript complet et validation des props",
+              "Suite de tests Jest et React Testing Library avec 85% de couverture",
+              "Publication du package sur npm"
+            ],
+            role: "Développeur seul — projet open-source personnel"
           },
-          stack: ['React', 'TypeScript', 'Storybook', 'Jest', 'React Testing Library', 'CSS Modules', 'npm'],
-        },
+          stack: [
+            "React",
+            "TypeScript",
+            "Storybook",
+            "Jest",
+            "React Testing Library",
+            "CSS Modules",
+            "npm"
+          ]
+        }
       ],
     },
     stack: {
@@ -413,43 +557,49 @@ export const t = {
       title: 'EXPÉRIENCE',
       items: [
         {
-          year: '2024 (6 mois)',
-          title: 'Ingénieur Automatisation QA',
-          company: 'SINORFI',
-          desc: 'Conçu et réalisé la plateforme de TNR Automation. Synchronisation Azure DevOps, orchestration de tests Selenium, génération de rapports PDF auto, réduction du temps de test de 70%.'
+          year: '2021 (1 mois)',
+          title: 'Stage Développeur Web',
+          company: 'Bizerte Smart City',
+          desc: 'Développement de Ma Ville en Poche, une application web locale permettant aux habitants et aux nouveaux arrivants de découvrir facilement les restaurants, activités de loisirs, services du quotidien et lieux de divertissement de leur ville.'
         },
         {
-          year: '2023 (3 mois)',
+          year: '2023 ( 3 mois)',
+          title: 'Stage Développeur Full-Stack',
+          company: 'VERMEG',
+          desc: 'Contribué au développement full-stack d’un projet web réalisé en équipe de 4 personnes dans le cadre d’un stage. Réalisation d’interfaces utilisateur, développement d’API backend, intégration de Cloudinary et mise en place d’un chat temps réel avec Socket.io.'
+        },
+        {
+          year: '2022 (4 mois)',
           title: 'Stage Développeur Full-Stack',
           company: 'INFOplus',
           desc: 'Développé le portail intranet SaaS EduSpace. Système complet de gestion de notes, plannings et absences temps réel par rôle étudiant/admin avec React, Node.js, et MongoDB.'
         },
         {
-          year: '2023',
-          title: 'Lead Frontend',
-          company: 'AssocNet (Académique)',
-          desc: 'Dirigé l\'équipe frontend (4 pers.) sur un réseau social dédié aux associations. Intégration Cloudinary pour les fichiers et chat temps réel via des serveurs de sockets.'
+          year: '2024 (6 mois)',
+          title: 'Stage Ingénieur Automatisation QA',
+          company: 'SINORFI',
+          desc: 'Conçu et réalisé la plateforme de TNR Automation. Synchronisation Azure DevOps, orchestration de tests Selenium, génération de rapports PDF auto, réduction du temps de test de 70%.'
         },
         {
-          year: '2021 (3 mois)',
-          title: 'Stage Développeur Web',
-          company: 'Municipalité de Bizerte',
-          desc: 'Développé la civic-app CityPulse. Implémenté le signalement géolocalisé GPS citoyen et connecté les horaires de bus temps réel avec Leaflet.js et Symfony.'
-        },
-        {
-          year: '2024',
+          year: 'Janvier 2025',
           title: 'Diplôme d\'Ingénieur Informatique',
           company: 'ESPRIT',
           desc: 'Validé un cursus complet de 5 ans spécialisé dans le développement d\'applications distribuées, architectures d\'entreprise et méthodologies de test avancées.'
+        },
+        {
+          year: 'Depuis 2025',
+          title: 'Ingénieur Informatique',
+          company: 'SINORFI',
+          desc: 'Début de mon parcours professionnel chez SINORFI en tant qu’ingénieur informatique, avec des missions autour du développement d’outils internes, de solutions d’automatisation et d’applications web visant à améliorer les processus techniques et la qualité des livrables.'
         }
       ]
     },
     about: {
       tag: 'À propos',
       bio: [
-        'Ingénieur en informatique diplômé de l\'ESPRIT, Tunis — je construis des applications web performantes et des systèmes d\'automatisation qui résolvent de vrais problèmes.',
-        'Mon expertise couvre le développement full-stack, l\'automatisation des tests et les interfaces orientées données. J\'ai livré des projets en civic tech, edtech et outils enterprise.',
-        'Actuellement disponible pour des missions freelance et des contrats à distance. Je vous apporte rigueur technique, communication claire et une vraie culture du livrable.',
+        "Ingénieur en informatique, je développe des applications web modernes, performantes et pensées pour répondre à des besoins concrets.",
+        "J’ai une expérience en développement full-stack, en automatisation des tests et en création d’interfaces orientées données. Mes projets couvrent l’éducation, la civic tech et les outils d’entreprise.",
+        "Aujourd’hui, je suis ouvert aux missions freelance et aux opportunités à distance. J’aime travailler avec sérieux, communiquer clairement et livrer des solutions propres et fiables."
       ],
       highlight: 'développement full-stack',
       facts: [
@@ -457,11 +607,11 @@ export const t = {
         { label: 'Disponibilité', value: 'Ouvert aux missions' },
         { label: 'Stack', value: 'React · Node.js · Spring Boot' },
         { label: 'Langues', value: 'Français · Anglais · Arabe' },
-        { label: 'Formation', value: 'Ing. Informatique — ESPRIT 2024' },
+        { label: 'Formation', value: 'Ingénieur en informatique' },
       ],
       social: [
         { label: 'LinkedIn', href: 'https://linkedin.com/in/skander-zouaoui' },
-        { label: 'GitHub', href: '#' },
+        { label: 'GitHub', href: 'https://github.com/SkanderZouaoui' },
         { label: 'Email', href: 'mailto:zouaoui.mohamedskander@gmail.com' },
       ],
     },
