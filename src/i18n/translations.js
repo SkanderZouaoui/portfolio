@@ -12,9 +12,9 @@ export const t = {
       sub2: 'Based in Tunis — Available worldwide',
       scroll: 'scroll to explore ↓',
       stats: [
-        { num: '5+', label: 'Projects' },
-        { num: '3', label: 'Internships' },
-        { num: 'Eng.', label: 'ESPRIT 2024' },
+        { num: '8+', label: 'Projects' },
+        { num: '4', label: 'Internships' },
+        { num: 'Eng.', label: 'Software' },
       ],
     },
     projects: {
@@ -269,9 +269,9 @@ export const t = {
       sub2: 'Basé à Tunis — Disponible en remote',
       scroll: 'défiler pour explorer ↓',
       stats: [
-        { num: '5+', label: 'Projets' },
-        { num: '3', label: 'Stages' },
-        { num: 'Ing.', label: 'ESPRIT 2024' },
+        { num: '8+', label: 'Projets' },
+        { num: '4', label: 'Stages' },
+        { num: 'Ing.', label: 'Informatique' },
       ],
     },
     projects: {
