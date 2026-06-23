@@ -49,8 +49,8 @@ export default function Contact() {
           </div>
           {/* ── Bouton CV ── */}
           <a
-            href="/CV_Skander_Zouaoui.pdf"
-            download="CV_Skander_Zouaoui.pdf"
+            href="/CV_Mohamed_Skander_Zouaoui.pdf"
+            download="CV_Mohamed_Skander_Zouaoui.pdf"
             className={styles.cvBtn}
             data-reveal="up"
             data-reveal-delay="0.25"

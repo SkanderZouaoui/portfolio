@@ -49,6 +49,7 @@ export default function Hero({ isLoaded }) {
       scrollTrigger: { trigger: sectionRef.current, start: 'top top', end: 'bottom top', scrub: 1 }
     })
     tl.to(titleRef.current, { y: -80, ease: 'none' }, 0)
+    tl.to(tagsRef.current,  { y: -100, ease: 'none' }, 0)
     tl.to(subRef.current,   { y: -40, ease: 'none' }, 0)
     return () => tl.kill()
   }, [isLoaded])
@@ -65,7 +66,7 @@ export default function Hero({ isLoaded }) {
 
       <div className={styles.content}>
         <div className={styles.topRow} ref={tagsRef} style={{ opacity: 0 }}>
-          <span className="tag accent">{txt.label}</span>
+          <span className={`tag accent ${styles.heroTag}`}>{txt.label}</span>
           <span className={`${styles.scroll} mono`} ref={scrollRef}>{txt.scroll}</span>
         </div>
 

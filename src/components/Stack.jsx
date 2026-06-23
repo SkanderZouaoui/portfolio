@@ -8,16 +8,75 @@ import { getCatColor } from '../utils/colors'
 import styles from './Stack.module.css'
 
 const ICONS = {
-  'React.js / Next.js': '⚛',
-  'Angular': '🅰',
-  'Three.js / WebGL': '⬡',
-  'Node.js / Express.js': '⬡',
-  'Spring Boot': '🍃',
-  'Symfony / PHP': '🐘',
-  'MongoDB / MySQL': '🗄',
-  'Selenium / Test Automation': '🔬',
-  'Selenium / Automatisation': '🔬',
-  'Azure DevOps': '☁',
+  'React.js / Next.js': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)" />
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+    </svg>
+  ),
+  'Angular': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2L2 6l3 13 7 3 7-3 3-13L12 2z" />
+      <path d="M12 6L7.5 15.5h9L12 6z" />
+      <path d="M9 13h6" />
+    </svg>
+  ),
+  'Three.js / WebGL': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+      <path d="M2 17l10 5 10-5" />
+      <path d="M2 12l10 5 10-5" />
+    </svg>
+  ),
+  'Node.js / Express.js': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" />
+      <path d="M12 22V12" />
+      <path d="M12 12l9-5" />
+      <path d="M12 12L3 7" />
+    </svg>
+  ),
+  'Spring Boot': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 22c1.25-3.25 3.5-7.5 7.5-9.5 3.5-1.75 6.75-2.25 10.5-2.5.25 3.75-.25 7-2 10.5-2 4-6.25 6.25-9.5 7.5-.75-3.5-2-6.5-6.5-6.5z" transform="rotate(-45 12 12)" />
+      <path d="M2 22l11-11" />
+    </svg>
+  ),
+  'Symfony / PHP': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+      <path d="M12 18v-4" />
+    </svg>
+  ),
+  'MongoDB / MySQL': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+      <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+    </svg>
+  ),
+  'Selenium / Test Automation': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 3h12" />
+      <path d="M9 3v6L4 18a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L15 9V3" />
+      <path d="M6 18h12" />
+    </svg>
+  ),
+  'Selenium / Automatisation': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 3h12" />
+      <path d="M9 3v6L4 18a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L15 9V3" />
+      <path d="M6 18h12" />
+    </svg>
+  ),
+  'Azure DevOps': (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z" />
+    </svg>
+  ),
 }
 
 const LEVEL_LABEL = {
@@ -94,7 +153,21 @@ function SkillCard({ skill, index, lang, theme }) {
       </div>
 
       <div className={styles.skillInfo}>
-        <span className={styles.skillIcon}>{ICONS[skill.name] || '◈'}</span>
+        <span
+          className={styles.skillIcon}
+          style={{
+            color: active ? color : 'var(--muted)',
+            transition: 'color 0.3s ease, transform 0.3s ease',
+            transform: active ? 'scale(1.1)' : 'scale(1)',
+          }}
+        >
+          {ICONS[skill.name] || (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v8M8 12h8" />
+            </svg>
+          )}
+        </span>
         <h4 className={styles.skillName}>{skill.name}</h4>
         <span className={`${styles.levelText} mono`}>{levelText}</span>
       </div>

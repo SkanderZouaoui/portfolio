@@ -62,7 +62,14 @@
 .skillInfo {
   display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center;
 }
-.skillIcon { font-size: 1.1rem; line-height: 1; filter: grayscale(0.3); }
+.skillIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+}
 .skillName {
   font-family: 'Cabinet Grotesk', sans-serif;
   font-size: 13px; font-weight: 600; color: var(--text);
