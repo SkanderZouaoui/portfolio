@@ -3,3 +3,5 @@ DS_Store
 *.local  
 .env 
 .env.*
+dist
+package-lock.json
